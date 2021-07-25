@@ -26,6 +26,7 @@ what's here to work the way you'd like it to.
   --color-secondary: #5b7a81;
   --color-border: #c7d5d8;
   --color-bg: #f5f5f5;
+  --ghost-accent-color: #d13f00; /* ghost accent color added */
 
   /* Fonts */
   --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -1221,7 +1222,8 @@ h6 {
         bottom: 0;
         left: 0;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0);
+       /* background: rgba(255, 255, 255, 0); */
+        background: #d13f00;
         transition: background 0.3s ease;
     }
 
@@ -1239,11 +1241,12 @@ h6 {
 
     .gh-portal-triggerbtn-container.with-label {
         padding: 0 12px 0 16px;
+        
     }
 
     .gh-portal-triggerbtn-label {
         padding: 8px;
-        color: rgb(255, 255, 255);
+        color: white;
         display: block;
         white-space: nowrap;
         max-width: 380px;
