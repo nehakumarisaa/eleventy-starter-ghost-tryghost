@@ -67,11 +67,26 @@
                     </div>
                 </main>
             </div>
-
+            
+            <!--Adding code for modal subscribe button 1st snippet STARTS on 25th July, 2021-->
+            <div>
+			{% include "layouts/iframe.html" %}
+			</div>
+             <!--Adding code for modal subscribe button 1st snippet ENDS on 25th July, 2021--> 
+             
             <div class="viewport-bottom">
                 {% include "partials/footer.njk" %}
             </div>
+            
+             <!--Adding code for modal subscribe button 2nd snippet STARTS on 25th July, 2021-->
+             {% include "partials/subscribe.njk" %}
 
+            <!--Scripts-->
+            {% include "partials/scripts-jquery.njk" %}
+            {# include "partials/scripts-casper.njk" #}
+            {% include "partials/scripts-subscribe.njk" %}
+             <!--Adding code for modal subscribe button 2nd snippet ENDS on 25th July, 2021-->
+            
             {{ site.codeinjection_foot | safe if site.codeinjection_foot }}
             {{ codeinjection_foot | safe if codeinjection_foot }}
         </div>
