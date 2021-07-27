@@ -724,7 +724,7 @@ h6 {
 .site-banner {
   max-width: 80%;
   margin: 0 auto;
-  padding: 10vw 0;
+  padding: 5vw 0; /* padding changed from 10vw 0 to 5vw 0 for nav panel */
   text-align: center;
 }
 
@@ -748,11 +748,14 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 15px 0 0 0;
+  margin: 0 0 0 0; /* margin changed from 15px 0 0 0 to 0 0 0 0 for nav panel */
 }
 
 .site-nav-left {
   margin: 0 20px 0 -10px;
+  /* Added padding and padding-top for nav panel */
+  padding: 3rem;
+  padding-top: 1px;
 }
 
 .site-nav-button {
