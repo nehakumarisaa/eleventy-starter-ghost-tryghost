@@ -692,6 +692,11 @@ h6 {
   opacity: 1;
 }
 
+/* Added .site-nav-right css for nav panel */
+.site-nav-right {
+    margin: -25px 20px 0 -10px;
+}
+
 .site-nav-right .site-nav-button {
     margin-left: .3rem;
 }
