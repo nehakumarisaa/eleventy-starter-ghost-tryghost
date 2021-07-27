@@ -48,6 +48,11 @@ what's here to work the way you'd like it to.
 /* Reset
 /* ---------------------------------------------------------- */
 
+/* Added .site-nav-right css for nav panel */
+.site-nav-right {
+    margin: -25px 20px 0 -10px;
+}
+
 html,
 body,
 div,
@@ -690,11 +695,6 @@ h6 {
 .site-nav-item:hover {
   text-decoration: none;
   opacity: 1;
-}
-
-/* Added .site-nav-right css for nav panel */
-.site-nav-right {
-    margin: -25px 20px 0 -10px;
 }
 
 .site-nav-right .site-nav-button {
