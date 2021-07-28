@@ -57,6 +57,17 @@ module.exports = function(config) {
   config.addFilter("htmlDateString", dateObj => {
     return new Date(dateObj).toISOString().split("T")[0];
   });
+  
+  // Add shortcode for date format
+    config.addShortcode("formatDate", function(date, format) {
+        date = new Date(date);
+        if ( format == "ISO") {
+            var format_date = moment(date).toISOString();
+        } else {
+            var format_date = moment(date).format(format);
+        }
+        return format_date;
+    });
 
   // Don't ignore the same files ignored in the git repo
   config.setUseGitIgnore(false);
