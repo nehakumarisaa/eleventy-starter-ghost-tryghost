@@ -52,7 +52,7 @@ what's here to work the way you'd like it to.
 .site-nav-right {
     margin: -25px 20px 0 -10px;
     list-style: none;
-    
+    text-align: right;
 }
 
 /* Added nav right styling */
