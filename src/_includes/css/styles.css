@@ -51,14 +51,14 @@ what's here to work the way you'd like it to.
 /* Added .site-nav-right css for nav panel */
 .site-nav-right {
     margin: -25px 20px 0 -10px;
-    display: inline-block;
+    
 }
 
 /* Added nav right styling */
 
-.gh-social svg {height:22px;width:22px;fill:#fff}
+.gh-social svg {height:22px;width:22px;fill:#fff;display:inline-block;}
 
-a.gh-head-button {display:block;padding:8px 15px;color:#15171A;font-weight:500;letter-spacing:-.015em;font-size:1.5rem;line-height:1em;background:#fff;border-radius:30px}
+a.gh-head-button {display:block;padding:8px 15px;color:#15171A;font-weight:500;letter-spacing:-.015em;font-size:1.5rem;line-height:1em;background:#fff;border-radius:30px;display:inline-block;}
 
 html,
 body,
