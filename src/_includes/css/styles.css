@@ -53,6 +53,9 @@ what's here to work the way you'd like it to.
     margin: -25px 20px 0 -10px;
     list-style: none;
     text-align: right;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
 }
 
 /* Added nav right styling */
