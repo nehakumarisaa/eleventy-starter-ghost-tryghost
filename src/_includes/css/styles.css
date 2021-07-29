@@ -66,6 +66,12 @@ a.gh-head-button {display:block;padding:8px 15px;color:#15171A;font-weight:500;l
 
 /* Added date reading time css */
 
+.post-card-meta {
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+}
+
 .post-card-byline-content {
     flex: 1 1 50%;
     display: flex;
