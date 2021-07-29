@@ -26,7 +26,7 @@
                 </div>
                 {% endif %}
                <span><a href="/author/{{ post.primary_author.slug }}/">{{ post.primary_author.name }}</a></span> </div>
-                <div><span>{{ post.published_at | safe | htmlDateString }} <span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read</span>
+                <div class="post-card-footer-right"><span>{{ post.published_at | safe | htmlDateString }} <span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read</span>
             </div>
         </footer>
     </a>
