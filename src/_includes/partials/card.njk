@@ -15,7 +15,7 @@
             <p>{{ post.excerpt }}</p>
         </div>
         <footer class="post-card-footer">
-            <div class="post-card-footer-left">
+            <div class="post-card-byline-content">
                 {% if post.primary_author.profile_image %}
                 <div class="post-card-avatar">
                     <img
@@ -25,8 +25,8 @@
                     />
                 </div>
                 {% endif %}
-               <span><a href="/author/{{ post.primary_author.slug }}/">{{ post.primary_author.name }}</a></span></div><br>
-                  <div><span class="post-card-byline-date">{{ post.published_at | safe | htmlDateString }} <span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read</span>
+               <span><a href="/author/{{ post.primary_author.slug }}/">{{ post.primary_author.name }}</a></span>
+                  <span class="post-card-byline-date">{{ post.published_at | safe | htmlDateString }} <span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read</span>
             </div>
         </footer>
     </a>
