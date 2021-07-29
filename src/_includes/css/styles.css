@@ -64,6 +64,21 @@ what's here to work the way you'd like it to.
 
 a.gh-head-button {display:block;padding:8px 15px;color:#15171A;font-weight:500;letter-spacing:-.015em;font-size:1.5rem;line-height:1em;background:#fff;border-radius:30px;}
 
+/* Added date reading time css */
+
+.post-card-byline-content {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 2px 0 0 6px;
+    color: #92a3ab;
+    font-size: 1.2rem;
+    line-height: 1.4em;
+    font-weight: 400;
+    letter-spacing: .2px;
+    text-transform: uppercase;
+}
+
 html,
 body,
 div,
