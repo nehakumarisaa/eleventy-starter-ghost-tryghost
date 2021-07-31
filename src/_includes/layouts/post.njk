@@ -1,34 +1,192 @@
+pagination:
+  data: collections.posts
+  size: 20
+  alias: posts
+
 {% extends 'layouts/default.njk' %}
 
 {% set title = post.title %}
 {% set codeinjection_head = post.codeinjection_head %}
 {% set codeinjection_foot = post.codeinjection_foot %}
 
+{% block body_class %}post-template{% endblock %}
+
 {% block content %}
-    <article class="content">
+    <article class="post-full{% if post.feature_image %}{% else %} no-image{% endif %}">
+
+        <header class="post-full-header">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+
+            {% if post.primary_tag %}
+                <section class="post-full-tags">
+                    <a href="/tag/{{ post.primary_tag.slug }}/">{{ post.primary_tag.name }}</a>
+                </section>
+            {% endif %}
+
+            <h1 class="post-full-title">{{ post.title }}</h1>
+
+            {% if post.excerpt %}
+                <p class="post-full-custom-excerpt">{{ post.excerpt }}</p>
+            {% endif %}
+
+            <div class="post-full-byline">
+
+                <section class="post-full-byline-content">
+
+                    <ul class="author-list">
+                        {% for author in post.authors %}
+                            <li class="author-list-item">
+
+                                <div class="author-card">
+                                    {% if author.profile_image %}
+                                        <img class="author-profile-image" src="{{ author.profile_image }}" alt="{{ author.name }}" />
+                                    {% else %}
+                                        <div class="author-profile-image">{% include "partials/icons/avatar" %}</div>
+                                    {% endif %}
+                                    <div class="author-info">
+                                        {% if author.bio %}
+                                            <div class="bio">
+                                                <h2>{{ author.name }}</h2>
+                                                <p>{{ author.bio }}</p>
+                                                <p><a href="{{ author.url }}">More posts</a> by {{ author.name }}.</p>
+                                            </div>
+                                        {% else %}
+                                            <h2>{{ author.name }}</h2>
+                                            <p>Read <a href="{{ author.url }}">more posts</a> by this author.</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                {% if author.profile_image %}
+                                <a href="{{ author.url }}" class="author-avatar">
+                                    <img class="author-profile-image" src="{{ author.profile_image }}" alt="{{ author.name }}" />
+                                </a>
+                                {% else %}
+                                <a href="{{ author.url }}" class="author-avatar author-profile-image">{% include "partials/icons/avatar" %}</a>
+                                {% endif %}
+
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    <section class="post-full-byline-meta">
+                        <h4 class="author-name"><a href="{{ post.primary_author.url }}">{{ post.primary_author.name }}</a></h4>
+                        <div class="byline-meta-content">
+                            <time class="byline-meta-date" datetime="{% formatDate post.published_at, "YYYY-MM-DD" %}">{% formatDate post.published_at, "D MMM YYYY" %}</time>
+                            <span class="byline-reading-time"><span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read</span>
+                        </div>
+                    </section>
+
+                </section>
+
+
+            </div>
+        </header>
+
         {% if post.feature_image %}
-            <figure class="post-feature-image">
-                <img src="{{ post.feature_image }}" alt="{{ title }}">
-            </figure>
+        <figure class="post-full-image">
+            {# This would be a good place for a responsive image to load different sizes depending on device
+            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 #}
+            <img src="{{ post.feature_image }}" alt="{{ post.title }}" />
+        </figure>
         {% endif %}
+
         <section class="post-full-content">
-            <h1 class="content-title">{{ title }}</h1>
-            <section class="content-body load-external-scripts">
+            <div class="post-content">
                 {{ content | safe }}
-            </section>
+            </div>
         </section>
+
     </article>
+	<div>
+</div>
+<div>
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            {% if post.primary_tag %}
+			<section class="post-full-tags">
+			
+				
+					<article class="read-next-card">
+						<header class="read-next-card-header">
+							<h3><span>More in</span> <a href="{{url}}">{{post.primary_tag.name}}</a></h3>
+						</header>
+						<div class="read-next-card-content">
+							<ul>
+								{% for post in collections.posts %}
+									{% if post.url in page.url %}
+										
+									{% else %}
+									
+									<li>
+										<h4><a href="{{post.url}}">{{post.title}}</a></h4>
+										<div class="read-next-card-meta">
+											<p><time datetime="{% formatDate post.published_at, "ISO" %}">{% formatDate post.published_at, "D MMM YYYY" %}</time> <span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read </p>
+										</div>
+									</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div>
+					</article>
+				
+             </section>
+             {% endif %}
+			 
+				<div>
+				{% extends 'layouts/post.njk' %}
+				{% from "partials/card.njk" import card %}
+				{% set title = "Posts" %}
+
+				{% block header_post  %} 
+					{% include "partials/header-home.njk" %}
+				{% endblock %}
+
+				{% block content_post %}
+					<section class="post-feed">
+					{% if post.posts %}
+						{% for post in post.posts %}
+							{{ card(post.next-card) }}
+						{% endfor %}
+					{% else %}
+						
+					{% endif %}
+		
+						
+						
+					</section>
+				{% endblock %}
+
+				 </div>
+			
+			
+		</div>
+	</div>
+</aside>
+</div>
+
 {% endblock %}
 
 {%- block seo -%}
+    <!-- Facebook OpenGraph -->
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title }} – {{ site.title }}">
+    <meta property="og:description" content="{{ post.excerpt }}">
+    <meta property="og:url" content="{{ site.url + page.url }}">
+    <meta property="og:image" content="{{ post.feature_image }}">
+    <meta property="og:locale" content="{{ site.lang }}">
+    <meta property="article:author" content="{{ site.url }}">
+
     <!--Twitter Card-->
-    <meta name="twitter:site" content="{{ site.twitter }}">
-    <meta name="twitter:creator" content="{{ post.primary_author.twitter }}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="{{ site.url + page.url }}">
     <meta name="twitter:title" content="{{ title }} – {{ site.title }}">
     <meta name="twitter:description" content="{{ post.excerpt }}">
+    <meta name="twitter:url" content="{{ site.url + page.url }}">
     <meta name="twitter:image" content="{{ post.feature_image }}">
+    <meta name="twitter:site" content="{{ site.twitter }}">
+    <meta name="twitter:creator" content="{{ post.primary_author.twitter }}">
 
     <!--Schema-->
     <link rel="author" href="{{ post.primary_author.website }}">
@@ -36,14 +194,4 @@
     <meta itemprop="name" content="{{ title }} – {{ site.title }}">
     <meta itemprop="description" content="{{ post.excerpt }}">
     <meta itemprop="image" content="{{ post.feature_image }}">
-
-    <!-- Facebook OpenGraph -->
-    <meta property="og:url" content="{{ site.url + page.url }}">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ title }} – {{ site.title }}">
-    <meta property="og:image" content="{{ post.feature_image }}">
-    <meta property="og:description" content="{{ post.excerpt }}">
-    <meta property="og:site_name" content="{{ site.title }}">
-    <meta property="og:locale" content="{{ site.lang }}">
-    <meta property="article:author" content="{{ site.url }}">
 {%- endblock -%}
