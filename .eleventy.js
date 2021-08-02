@@ -58,6 +58,9 @@ module.exports = function(config) {
     return new Date(dateObj).toISOString().split("T")[0];
   });
   
+  // Limit add filter
+   config.addNunjucksFilter("limit", (arr, limit) => arr.slice(0, limit));
+  
   // Add shortcode for date format
     config.addShortcode("formatDate", function(date, format) {
         date = new Date(date);
