@@ -36,27 +36,6 @@ pagination:
                     <ul class="author-list">
                         {% for author in post.authors %}
                             <li class="author-list-item">
-
-                                <div class="author-card">
-                                    {% if author.profile_image %}
-                                        <img class="author-profile-image" src="{{ author.profile_image }}" alt="{{ author.name }}" />
-                                    {% else %}
-                                        <div class="author-profile-image">{% include "partials/icons/avatar" %}</div>
-                                    {% endif %}
-                                    <div class="author-info">
-                                        {% if author.bio %}
-                                            <div class="bio">
-                                                <h2>{{ author.name }}</h2>
-                                                <p>{{ author.bio }}</p>
-                                                <p><a href="{{ author.url }}">More posts</a> by {{ author.name }}.</p>
-                                            </div>
-                                        {% else %}
-                                            <h2>{{ author.name }}</h2>
-                                            <p>Read <a href="{{ author.url }}">more posts</a> by this author.</p>
-                                        {% endif %}
-                                    </div>
-                                </div>
-
                                 {% if author.profile_image %}
                                 <a href="{{ author.url }}" class="author-avatar">
                                     <img class="author-profile-image" src="{{ author.profile_image }}" alt="{{ author.name }}" />
