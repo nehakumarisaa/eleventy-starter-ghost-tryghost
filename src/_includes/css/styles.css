@@ -85,6 +85,25 @@ a.gh-head-button {display:block;padding:8px 15px;color:#15171A;font-weight:500;l
     text-transform: uppercase;
 }
 
+/* Added img styling */
+.author-profile-image, .avatar-wrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #e3e9ed;
+    border-radius: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.author-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 0 4px;
+    padding: 0;
+    list-style: none;
+}
+
 html,
 body,
 div,
