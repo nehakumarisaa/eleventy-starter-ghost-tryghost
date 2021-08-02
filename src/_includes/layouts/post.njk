@@ -60,6 +60,13 @@ pagination:
 
 
             </div>
+            {% if post.feature_image %}
+        <figure class="post-full-image">
+            {# This would be a good place for a responsive image to load different sizes depending on device
+            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 #}
+            <img src="{{ post.feature_image }}" alt="{{ post.title }}" />
+        </figure>
+        {% endif %}
         </header>
 
         <section class="post-full-content">
