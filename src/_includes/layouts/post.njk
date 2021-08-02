@@ -75,7 +75,22 @@ pagination:
                 {{ content | safe }}
             </section>
         </section>
+        <div>
+				{% extends 'layouts/post.njk' %}
+				{% from "partials/card.njk" import card %}
+				{% set title = "Posts" %}
 
+				{% block content_post %}
+					<section class="post-feed">
+					{% if post.posts %}
+						{% for post in post.posts | limit(3) %}
+							{{ card(post.next-card) }}
+						{% endfor %}
+					{% else %}
+						
+					{% endif %}	
+					</section>
+				{% endblock %} </div>
     </article>
 
 
