@@ -83,84 +83,16 @@ pagination:
             </div>
         </header>
 
-        {% if post.feature_image %}
-        <figure class="post-full-image">
-            {# This would be a good place for a responsive image to load different sizes depending on device
-            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 #}
-            <img src="{{ post.feature_image }}" alt="{{ post.title }}" />
-        </figure>
-        {% endif %}
-
         <section class="post-full-content">
-            <div class="post-content">
+            <h1 class="content-title">{{ title }}</h1>
+            <section class="content-body load-external-scripts">
                 {{ content | safe }}
-            </div>
+            </section>
         </section>
 
     </article>
-	<div>
-</div>
-<div>
-<aside class="read-next outer">
-    <div class="inner">
-        <div class="read-next-feed">
-            {% if post.primary_tag %}
-			<section class="post-full-tags">
-			
-				
-					<article class="read-next-card">
-						<header class="read-next-card-header">
-							<h3><span>More in</span> <a href="{{url}}">{{post.primary_tag.name}}</a></h3>
-						</header>
-						<div class="read-next-card-content">
-							<ul>
-								{% for post in collections.posts %}
-									{% if post.url in page.url %}
-										
-									{% else %}
-									
-									<li>
-										<h4><a href="{{post.url}}">{{post.title}}</a></h4>
-										<div class="read-next-card-meta">
-											<p><span>{{ post.published_at | safe | htmlDateString }}</span> <span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read </p>
-										</div>
-									</li>
-									{% endif %}
-								{% endfor %}
-							</ul>
-						</div>
-					</article>
-				
-             </section>
-             {% endif %}
-			 
-				<div>
-				{% extends 'layouts/post.njk' %}
-				{% from "partials/card.njk" import card %}
-				{% set title = "Posts" %}
 
-				{% block content_post %}
-					<section class="post-feed">
-					{% if post.posts %}
-						{% for post in post.posts %}
-							{{ card(post.next-card) }}
-						{% endfor %}
-					{% else %}
-						
-					{% endif %}
-		
-						
-						
-					</section>
-				{% endblock %}
 
-				 </div>
-			
-			
-		</div>
-	</div>
-</aside>
-</div>
 
 {% endblock %}
 
