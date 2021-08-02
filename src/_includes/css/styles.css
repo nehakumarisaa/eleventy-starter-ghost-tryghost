@@ -89,7 +89,6 @@ a.gh-head-button {display:block;padding:8px 15px;color:#15171A;font-weight:500;l
 .author-profile-image, .avatar-wrapper {
     display: block;
     width: 10%;
-    height: 15%;
     background: #e3e9ed;
     border-radius: 100%;
     -o-object-fit: cover;
