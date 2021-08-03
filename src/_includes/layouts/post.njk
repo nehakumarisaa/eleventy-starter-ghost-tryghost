@@ -84,8 +84,8 @@ pagination:
 
 				{% block content_post %}
 					<section class="post-feed">
-					{% if post.more_posts %}
-						{% for post in post.more_posts %}
+					{% if collections.posts %}
+						{% for post in collections.posts %}
 							{{ card(post.next-card) }}
 						{% endfor %}
 					{% else %}
