@@ -75,7 +75,9 @@ pagination:
                 {{ content | safe }}
             </section>
         </section>
-        <div>
+       
+    </article>
+ <div>
 				{% extends 'layouts/post.njk' %}
 				{% from "partials/card.njk" import card %}
 				{% set title = "Posts" %}
@@ -91,8 +93,6 @@ pagination:
 					{% endif %}	
 					</section>
 				{% endblock %} </div>
-    </article>
-
 
 
 {% endblock %}
