@@ -78,21 +78,33 @@ pagination:
        
     </article>
  <div>
-				{% extends 'layouts/post.njk' %}
-				{% from "partials/card.njk" import card %}
-				{% set title = "Posts" %}
-
-				{% block content_post %}
-					<section class="post-feed">
-					{% if collections.posts %}
-						{% for post in collections.posts %}
-							{{ card(post.next-card) }}
-						{% endfor %}
-					{% else %}
-						
-					{% endif %}	
-					</section>
-				{% endblock %} </div>
+				<section class="post-full-tags">
+			
+				
+					<article class="read-next-card">
+						<header class="read-next-card-header">
+							<h3><span>More in</span> <a href="{{url}}">{{post.primary_tag.name}}</a></h3>
+						</header>
+						<div class="read-next-card-content">
+							<ul>
+								{% for post in collections.posts %}
+									{% if post.url in page.url %}
+										
+									{% else %}
+									
+									<li>
+										<h4><a href="{{post.url}}">{{post.title}}</a></h4>
+										<div class="read-next-card-meta">
+											<p><span>{{ post.published_at | safe | htmlDateString }}</span> <span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read </p>
+										</div>
+									</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div>
+					</article>
+				
+             </section>
 
 
 {% endblock %}
