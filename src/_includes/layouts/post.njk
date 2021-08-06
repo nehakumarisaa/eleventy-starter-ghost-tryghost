@@ -91,10 +91,7 @@ pagination:
 									
 									
 									<li>
-										<h4><a href="{{post.url}}">{{post.title}}</a></h4>
-										<div class="read-next-card-meta">
-											<p><span>{{ post.published_at | safe | htmlDateString }}</span> <span class="bull">&bull;</span> {{ post.html | safe | getReadingTime }} min read </p>
-										</div>
+										{{ card(post) }}
 									</li>
 									
 								{% endfor %}
