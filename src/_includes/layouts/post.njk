@@ -98,6 +98,7 @@ pagination:
 								{% endfor %}
 							</ul>
 						</div>
+                        <div class="link">
                         {% if collections.posts %}
                         {% set nextPost = collections.posts | getNextCollectionItem(page) %}
                         {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
@@ -109,7 +110,7 @@ pagination:
                         </ul>
                         {% endif %}
                         {% endif %}
-
+                        </div>
 					</article>
 				
              </section>
