@@ -218,7 +218,7 @@ module.exports = function(config) {
     },
 
     // Files read by Eleventy, add as needed
-    templateFormats: ["css", "njk", "md", "txt"],
+    templateFormats: ["css", "njk", "md", "txt", "liquid"],
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
     passthroughFileCopy: true
