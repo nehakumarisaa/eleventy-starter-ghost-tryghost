@@ -86,19 +86,7 @@ pagination:
 						<header class="read-next-card-header">
 							<h3><span>More in</span> <a href="{{url}}">{{post.primary_tag.name}}</a></h3>
 						</header>
-						<div class="read-next-card-content">
-							<ul>
-								{% for post in collections.posts %}
-									
-									
-									<li>
-										{{ card(post) }}
-									</li>
-									
-								{% endfor %}
-							</ul>
-						</div>
-                        <div class="link">
+                         <div class="link">
                         {% if collections.posts %}
                         {% set nextPost = collections.posts | getNextCollectionItem(page) %}
                         {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
@@ -111,6 +99,19 @@ pagination:
                         {% endif %}
                         {% endif %}
                         </div>
+						<div class="read-next-card-content">
+							<ul>
+								{% for post in collections.posts %}
+									
+									
+									<li>
+										{{ card(post) }}
+									</li>
+									
+								{% endfor %}
+							</ul>
+						</div>
+                       
 					</article>
 				
              </section>
